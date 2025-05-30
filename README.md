@@ -27,3 +27,9 @@ Open offline rust documentation :
 ```bash
 rustup doc
 ```
+
+Download and open doc locally for all crates (dependencies)
+
+```bash
+cargo doc --open
+```
