@@ -16,8 +16,8 @@ const SENTENCES: [[&str; 2]; 12] = [
 fn main() {
     println!("The Twelve Days of Christmas\n");
 
-    for day_nb in 0..SENTENCES.len() {
-        print_verse_start(SENTENCES[day_nb][0]);
+    for (day_nb, sentence) in SENTENCES.iter().enumerate() {
+        print_verse_start(sentence[0]);
         for i in (0..=day_nb).rev() {
             println!("{}", SENTENCES[i][1]);
         }
