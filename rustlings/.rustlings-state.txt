@@ -1,6 +1,6 @@
 DON'T EDIT THIS FILE!
 
-primitive_types4
+move_semantics5
 
 intro1
 intro2
@@ -22,3 +22,7 @@ quiz1
 primitive_types1
 primitive_types2
 primitive_types3
+move_semantics1
+move_semantics2
+move_semantics3
+move_semantics4
