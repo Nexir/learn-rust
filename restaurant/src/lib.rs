@@ -1,26 +1,24 @@
-mod front_of_house {
-    // Public module
-    pub mod hosting {
-        // Public function
-        pub fn add_to_waitlist() {}
+mod front_of_house;
 
-        fn seat_at_table() {}
-    }
+// use crate::front_of_house::hosting;
+// caller: resturant::front_of_house::hosting::add_to_waitlist()
+use crate::front_of_house::hosting::add_to_waitlist;
 
-    mod serving {
-        fn take_order() {}
-
-        fn serve_order() {}
-
-        fn take_payment() {}
-    }
-}
+// Re-exposing
+pub use crate::front_of_house::hosting;
+// caller: resturant::hosting::add_to_waitlist()
 
 pub fn eat_at_restaurant() {
     // Absolut path
     crate::front_of_house::hosting::add_to_waitlist();
     // Relative path
     self::front_of_house::hosting::add_to_waitlist();
+
+    // After use keyword, the hosting module is accesible in the scope
+    // Idiomatic way to bring a function in scope
+    hosting::add_to_waitlist();
+    // Not idiomatic
+    add_to_waitlist();
 
     // Order a breakfast in the simmer with Rye toast.
     let mut meal = back_of_house::Breakfast::summer("Rye");
@@ -66,4 +64,28 @@ mod back_of_house {
     }
 
     fn cook_order() {}
+}
+
+// Use parents modules to avoid conflicts
+use std::fmt;
+use std::io;
+
+fn function1() -> fmt::Result {
+    todo!()
+}
+
+fn function2() -> io::Result<()> {
+    todo!()
+}
+
+// Use alias to avoid conflict
+use std::fmt::Result;
+use std::io::Result as IoResult;
+
+fn function3() -> Result {
+    todo!()
+}
+
+fn function4() -> IoResult<()> {
+    todo!()
 }
